@@ -1,0 +1,9 @@
+### Visual Studio Code ###
+.vscode/
+
+### Old Files ###
+old/
+
+### Pycache ###
+modules/__pycache__/
+*.pyc
