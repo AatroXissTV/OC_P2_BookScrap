@@ -17,25 +17,50 @@ from modules.product import get_product_url
 #Initiate Data Storage
 urls = []
 
-#Loop Pages
-pages = np.arange(1,4,1)
+#Automated pagination
+pages = np.arange(1,50,1)
 for page in pages:
     page = requests.get("https://books.toscrape.com/catalogue/category/books/fantasy_19/page-" + str(page) + ".html")
     soup = BeautifulSoup(page.text, "html.parser")
-    
-    articleClass = soup.find_all('li', class_="col-xs-6 col-sm-4 col-md-3 col-lg-3")
 
-    sleep(randint(2,10))
+    #Condition for pagination.
+    next = soup.find('li', class_="next")
+    print(next)
 
-    #Loop through each article
-    for article in articleClass:
+    if next:
+        print("New category page found. Scraping page Data....")
+        #find all articles on category page
+        articleClass = soup.find_all('li', class_="col-xs-6 col-sm-4 col-md-3 col-lg-3")
 
-        #url
-        bookUrlCat = article.article.h3.a.get("href")
-        #Join url
-        basicUrl = "https://books.toscrape.com/catalogue/category/books/princess-between-worlds-wide-awake-princess-5_919/index.html"
-        url = urllib.parse.urljoin(basicUrl, bookUrlCat)
-        urls.append(url)
+        #Sleep to simulate a human
+        sleep(randint(2,20))
+
+        #Loop through each articl
+        for article in articleClass:
+            #Url 
+            bookUrlCat = article.article.h3.a.get("href")
+            #Join url
+            basicUrl = "https://books.toscrape.com/catalogue/category/books/princess-between-worlds-wide-awake-princess-5_919/index.html"
+            url = urllib.parse.urljoin(basicUrl, bookUrlCat)
+            urls.append(url)
+    else:
+        print("No new category found. Scraping last page data...")
+        #find all article on last page
+        articleClass = soup.find_all('li', class_="col-xs-6 col-sm-4 col-md-3 col-lg-3")
+
+        #Sleep to simulate a human
+        sleep(randint(2,20))
+
+        #Loop through each articl
+        for article in articleClass:
+            #Url 
+            bookUrlCat = article.article.h3.a.get("href")
+            #Join url
+            basicUrl = "https://books.toscrape.com/catalogue/category/books/princess-between-worlds-wide-awake-princess-5_919/index.html"
+            url = urllib.parse.urljoin(basicUrl, bookUrlCat)
+            urls.append(url)
+        print("last category page has been scraped.")
+        break
 
 ### PRODUCT DATA LOOP
 
