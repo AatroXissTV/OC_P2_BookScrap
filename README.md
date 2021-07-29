@@ -1,4 +1,4 @@
-# Title / BookScrap
+# BookScrap
 
 ## About
 * BookScrap was developed to complete the first project of Openc Classroom's "Python Application Developer" course. 
@@ -10,19 +10,28 @@
 
 ## Installation
 - From repository download files into **"Users/user_name/documents"**.:
+    ```
     $ cd /users/user_name/documents
     $ git clone https://github.com/AatroXissTV/BookScrap.git yourProjectName
     $ cd yourProjectName
+    ```
 - Create a Python environment named "env":
+    ```
     $ python -m venv env
+    ```
 - Activate the environment:
+    ```
     $ source env/Scripts/activate #Windows
+    ```
 - Install packages from **requirements.txt**:
+    ```
     $ pip install -r requirements.txt
-
+    ```
 ## How to use
 - Execute Script
+    ```
     $ python main.py
+    ```
 
 ## Future updates
 - [ ] Download Product Images
