@@ -1,5 +1,4 @@
 #Imports 
-import csv
 import requests
 from requests import get
 import bs4
