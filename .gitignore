@@ -7,3 +7,6 @@ old/
 ### Pycache ###
 modules/__pycache__/
 *.pyc
+
+### Img ###
+img/

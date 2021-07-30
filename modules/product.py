@@ -5,6 +5,8 @@ import bs4
 from bs4 import BeautifulSoup
 import urllib.parse
 
+#Import Download img
+from modules.utils import download
 
 def get_product_url(url): 
     #Initiate Data Storage
@@ -31,12 +33,15 @@ def get_product_url(url):
     bookUrl = url
 
     #Image
-    ImgUrl = soup.find("div", class_="item active").img.get("href")
+    ImgUrl = soup.find("div", class_="item active").img.get('src')
 
     #Join url
-    basicImgUrl = "https://books.toscrape.com/media/cache/db/01/db01b38d3200a5faff4ead42791416e4.jpg"
+    basicImgUrl = "https://books.toscrape.com/"
     finalImgUrl = urllib.parse.urljoin(basicImgUrl, ImgUrl)
     bookImage = finalImgUrl
+
+    #get function
+    download(bookImage, "img")
 
     #Title
     title = soup.find('h1').text

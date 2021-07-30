@@ -34,8 +34,9 @@
     ```
 
 ## Future updates
-- [ ] Download Product Images
 - [ ] Code enhancement and optimizations
+- [ ] Simulate human behavior with random pause between script
+- [x] Download Product Images
 - [x] Extract and load product informations
 - [x] Extract and load category informations
 - [x] Extract and load product & category informations from main page.
