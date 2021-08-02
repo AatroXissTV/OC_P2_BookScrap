@@ -18,11 +18,12 @@ def get_product_cat_url(catUrl):
     urls = []
 
     #Automated Pagination
+    print("*****************************")
     print("New category URL for scraping")
     print(catUrl)
 
     #Find "Next" class in catURl
-    print("Finding Next Class in Category Url")
+    print("Next class in category URL")
     req = requests.get(catUrl)
     soup = BeautifulSoup(req.content, "html.parser")
 
@@ -32,8 +33,7 @@ def get_product_cat_url(catUrl):
     if nextClass:
         #concatenate url
         cCatUrl = urllib.parse.urljoin(catUrl, 'page-')
-        print("Multiple category pages found")
-        print(cCatUrl)
+        print("Several category pages found.")
 
         #Pagination 
         pages = np.arange(1,50,1)
@@ -46,7 +46,7 @@ def get_product_cat_url(catUrl):
             print(next)
 
             if next:
-                print("New category page found. Scraping page Data....")
+                print("New category page found..")
                 #find all articles on category page
                 articleClass = soup.find_all('li', class_="col-xs-6 col-sm-4 col-md-3 col-lg-3")
 
@@ -62,7 +62,7 @@ def get_product_cat_url(catUrl):
                     url = urllib.parse.urljoin(basicUrl, bookUrlCat)
                     urls.append(url)
             else:
-                print("No new category found. Scraping last page data...")
+                print("No new category found..")
                 #find all article on last page
                 articleClass = soup.find_all('li', class_="col-xs-6 col-sm-4 col-md-3 col-lg-3")
 
@@ -77,11 +77,10 @@ def get_product_cat_url(catUrl):
                     basicUrl = "https://books.toscrape.com/catalogue/category/books/princess-between-worlds-wide-awake-princess-5_919/index.html"
                     url = urllib.parse.urljoin(basicUrl, bookUrlCat)
                     urls.append(url)
-                print("last category page has been scraped.")
+                print("Last category page has been scraped.")
                 break
     else:
-        print("Script did not found multiple category")
-        print("Scraping Page data....")
+        print("No several category pages found.")
 
         #find all articles on single category page.
         articleClass = soup.find_all('li', class_="col-xs-6 col-sm-4 col-md-3 col-lg-3")
@@ -116,18 +115,18 @@ def get_product_cat_url(catUrl):
         
     #Initiate category's name for csv file. 
     categoryName = soup.find("div", class_="page-header action").h1.text
-    print(categoryName)
     category ="%s_books.csv" % categoryName
+    print("Save Data in : ")
     print(category)
 
     #To see data frame
     print(dfBooks)
 
     #to see datatypes of columns
-    print(dfBooks.dtypes)
+    #print(dfBooks.dtypes)
 
     #to see where we're missing data & how much data is missing
-    print(dfBooks.isnull().sum())
+    #print(dfBooks.isnull().sum())
 
     #move scraped data into a csv file name 'category_books.csv'
     dfBooks.to_csv(category)

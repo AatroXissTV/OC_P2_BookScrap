@@ -5,6 +5,9 @@ import bs4
 from bs4 import BeautifulSoup
 import urllib.parse
 
+from time import sleep
+from random import randint
+
 #Import category.py
 from modules.category import get_product_cat_url
 
@@ -33,6 +36,7 @@ for link in catNavLink:
 
     #Get function
     categoryInfos = get_product_cat_url(finalCatUrl)
-    print("1 category has been scraped.")
+    print("A category has been Scraped")
+    sleep(randint(10,30))
 
 print(catUrl)
