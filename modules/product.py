@@ -4,6 +4,7 @@ from requests import get
 import bs4
 from bs4 import BeautifulSoup
 import urllib.parse
+import re
 
 #Import Download img
 from modules.utils import download
@@ -83,7 +84,10 @@ def get_product_url(url):
     bookPriceWithVat = rows[3][0]
 
     #Book Availability
-    bookAvailability = rows[5][0]
+    string = rows[5][0]
+    temp = re.findall(r'\d+', string)
+    res = list(map(int, temp))
+    bookAvailability = str(res)
 
 
     productInfos = {
