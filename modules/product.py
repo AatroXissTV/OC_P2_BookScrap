@@ -87,7 +87,8 @@ def get_product_url(url):
     string = rows[5][0]
     temp = re.findall(r'\d+', string)
     res = list(map(int, temp))
-    bookAvailability = str(res)
+    for r in res:
+        bookAvailability = r
 
 
     productInfos = {

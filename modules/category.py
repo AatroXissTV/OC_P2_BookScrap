@@ -128,6 +128,6 @@ def get_product_cat_url(catUrl):
     #print(dfBooks.isnull().sum())
 
     #move scraped data into a csv file name 'category_books.csv'
-    dfBooks.to_csv('csv/' + category)
+    dfBooks.to_csv('csv/' + category, encoding="utf-8-sig")
 
 #get_product_cat_url("https://books.toscrape.com/catalogue/category/books/travel_2/index.html")
