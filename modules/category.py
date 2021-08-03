@@ -1,7 +1,6 @@
 #Imports 
 import requests
 from requests import get
-import bs4
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
@@ -129,6 +128,6 @@ def get_product_cat_url(catUrl):
     #print(dfBooks.isnull().sum())
 
     #move scraped data into a csv file name 'category_books.csv'
-    dfBooks.to_csv(category)
+    dfBooks.to_csv('csv/' + category)
 
-get_product_cat_url("https://books.toscrape.com/catalogue/category/books/travel_2/index.html")
+#get_product_cat_url("https://books.toscrape.com/catalogue/category/books/travel_2/index.html")

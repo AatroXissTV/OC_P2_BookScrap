@@ -1,7 +1,6 @@
 #Imports
 import requests
 from requests import get
-import bs4
 from bs4 import BeautifulSoup
 import urllib.parse
 
@@ -37,6 +36,5 @@ for link in catNavLink:
     #Get function
     categoryInfos = get_product_cat_url(finalCatUrl)
     print("A category has been Scraped")
-    sleep(randint(10,30))
 
 print(catUrl)
